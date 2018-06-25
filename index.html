@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<script 
+ src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+</script>
+ 
+<body>
+ <div ng-app="testApp" ng-controller="appCtrl">
+   Welcome to {{ name | testFilter }}
+ </div>
+ 
+ <script>
+   var app = angular.module('testApp', []);
+      app.controller('appCtrl', function($scope) {
+          $scope.name = "tutorialspointexamples"
+       });
+ 
+    app.filter('testFilter',function(){
+      return function( str ) {
+        var revStr = str.split('').reverse();
+        return revStr[0].toUpperCase() + revStr.join('').slice(1);
+      }
+   });
+</script>
+</body>
+</html>
